@@ -1,23 +1,16 @@
 const express = require("express");
-const app = express();
-const port = process.env.PORT || 3000;
+const { PORT } = require("./config/serverConfig");
 
-// Middleware
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+const init = async () => {
+  const app = express();
 
-// Routes
-app.get("/", (req, res) => {
-  res.send("Hello, world!");
-});
+  app.get("/", (req, res) => {
+    res.send("Hello World!");
+  });
 
-// Error handling middleware
-app.use((err, req, res, next) => {
-  console.error(err.stack);
-  res.status(500).send("Something went wrong!");
-});
+  app.listen(PORT, () => {
+    console.log("Server listening on port:", PORT);
+  });
+};
 
-// Start the server
-app.listen(port, () => {
-  console.log(`Server is running on port ${port}`);
-});
+init();
