@@ -18,3 +18,5 @@
   }
 }
 ```
+
+- once this file setup is done go to `src` folder in the terminal and execute the command `npx sequelize db:create`
